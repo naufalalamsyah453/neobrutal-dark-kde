@@ -1,0 +1,14 @@
+{
+    "KPlugin": {
+        "Description": "Neobrutalism window decoration: thick outlines, hard shadows",
+        "EnabledByDefault": true,
+        "Name": "Neobrutal Dark"
+    },
+    "org.kde.kdecoration3": {
+        "blur": false,
+        "recommendedBorderSize": "Normal",
+        "styles": [
+            "titled"
+        ]
+    }
+}

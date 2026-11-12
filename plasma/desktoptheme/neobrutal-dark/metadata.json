@@ -1,0 +1,14 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Neobrutal Dark"
+            }
+        ],
+        "Description": "Neobrutalism dark: thick outlines and hard shadows",
+        "Id": "neobrutal-dark",
+        "License": "MIT",
+        "Name": "Neobrutal Dark",
+        "Version": "1.0"
+    }
+}

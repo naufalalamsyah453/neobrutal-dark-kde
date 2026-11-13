@@ -49,6 +49,9 @@ int main(int argc, char **argv)
         pal.setColor(QPalette::ButtonText, rgb(s, "Colors:Button/ForegroundNormal"));
         pal.setColor(QPalette::Highlight, rgb(s, "Colors:Selection/BackgroundNormal"));
         pal.setColor(QPalette::HighlightedText, rgb(s, "Colors:Selection/ForegroundNormal"));
+        pal.setColor(QPalette::Link, rgb(s, "Colors:Window/ForegroundLink"));
+        pal.setColor(QPalette::LinkVisited, rgb(s, "Colors:Window/ForegroundVisited"));
+        pal.setColor(QPalette::BrightText, rgb(s, "Colors:Window/ForegroundNormal"));
         pal.setColor(QPalette::ToolTipBase, rgb(s, "Colors:Tooltip/BackgroundNormal"));
         pal.setColor(QPalette::ToolTipText, rgb(s, "Colors:Tooltip/ForegroundNormal"));
         pal.setColor(QPalette::Disabled, QPalette::WindowText, QColor(120, 116, 100));
@@ -151,6 +154,9 @@ int main(int argc, char **argv)
 
     win.resize(820, 420);
     win.show();
+    // Fokuskan line edit kedua ("Focused") supaya cincin fokus biru terlihat
+    // di sana, bukan di tombol pertama.
+    le2->setFocus();
     app.processEvents();
     win.grab().save(out);
 

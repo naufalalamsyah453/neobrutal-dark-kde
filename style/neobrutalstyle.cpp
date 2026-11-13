@@ -85,9 +85,11 @@ bool isEnabled(const QStyleOption *o)
 
 NeobrutalStyle::NeobrutalStyle()
     : QProxyStyle(QStringLiteral("Fusion"))
-    , m_focus(255, 217, 61)
+    , m_focus(125, 180, 255)
     , m_hover(255, 107, 157)
     , m_link(125, 180, 255)
+    , m_active(74, 74, 74)
+    , m_shadow(96, 96, 96)
 {
     loadColors();
 }
@@ -157,9 +159,9 @@ void NeobrutalStyle::drawButtonFace(QPainter *p, const QStyleOption *o, int shad
         box(p, face, fill, ink);
     } else if (down || on) {
         face.translate(shadow, shadow);
-        box(p, face, m_focus, ink);
+        box(p, face, m_active, ink);
     } else {
-        p->fillRect(face.translated(shadow, shadow), hov ? m_hover : m_focus);
+        p->fillRect(face.translated(shadow, shadow), hov ? m_hover : m_shadow);
         box(p, face, hov ? fill.lighter(140) : fill, ink);
         if (focus) {
             p->fillRect(QRect(face.left() + BW + 1, face.top() + BW + 1, face.width() - 2 * (BW + 1), 1), m_focus);
@@ -213,8 +215,13 @@ void NeobrutalStyle::drawPrimitive(PrimitiveElement element, const QStyleOption 
     case PE_Frame:
     case PE_FrameGroupBox:
     case PE_FrameTabWidget:
-    case PE_FrameMenu:
         frameRect(p, opt->rect, opt->palette.color(QPalette::WindowText));
+        return;
+
+    case PE_FrameMenu:
+        // Fusion hanya menggambar garis luar di sini, jadi popup combobox/menu
+        // tampak transparan. Isi dulu panelnya supaya benar-benar opak.
+        box(p, opt->rect, opt->palette.color(QPalette::Window), opt->palette.color(QPalette::WindowText));
         return;
 
     case PE_PanelMenu:
@@ -235,10 +242,10 @@ void NeobrutalStyle::drawPrimitive(PrimitiveElement element, const QStyleOption 
         if (en && (opt->state & State_MouseOver)) {
             line = m_hover;
         }
-        const QColor fill = checked ? m_focus : opt->palette.color(QPalette::Base);
+        const QColor fill = checked ? m_active : opt->palette.color(QPalette::Base);
         box(p, r, fill, line);
         if (checked) {
-            const QColor mark = onColor(m_focus);
+            const QColor mark = onColor(m_active);
             if (opt->state & State_NoChange) {
                 p->fillRect(QRect(r.center().x() - 3, r.center().y(), 7, 2), mark);
             } else {
@@ -270,10 +277,10 @@ void NeobrutalStyle::drawPrimitive(PrimitiveElement element, const QStyleOption 
         p->setPen(Qt::NoPen);
         p->setBrush(line);
         p->drawEllipse(r);
-        p->setBrush(checked ? m_focus : opt->palette.color(QPalette::Base));
+        p->setBrush(checked ? m_active : opt->palette.color(QPalette::Base));
         p->drawEllipse(r.adjusted(BW, BW, -BW, -BW));
         if (checked) {
-            p->setBrush(onColor(m_focus));
+            p->setBrush(onColor(m_active));
             p->drawEllipse(r.adjusted(5, 5, -5, -5));
         }
         p->restore();
@@ -345,8 +352,8 @@ void NeobrutalStyle::drawControl(ControlElement element, const QStyleOption *opt
         const bool flatIdle = (b->features & QStyleOptionButton::Flat) && !active && !(b->state & State_MouseOver);
         if (active) {
             sub.rect.translate(SHADOW, SHADOW);
-            sub.palette.setColor(QPalette::ButtonText, onColor(m_focus));
-            sub.palette.setColor(QPalette::WindowText, onColor(m_focus));
+            sub.palette.setColor(QPalette::ButtonText, onColor(m_active));
+            sub.palette.setColor(QPalette::WindowText, onColor(m_active));
         }
         Q_UNUSED(flatIdle)
         drawControl(CE_PushButtonLabel, &sub, p, w);
@@ -355,8 +362,8 @@ void NeobrutalStyle::drawControl(ControlElement element, const QStyleOption *opt
     case CE_ToolButtonLabel: {
         if (isEnabled(opt) && (opt->state & (State_Sunken | State_On))) {
             QStyleOptionToolButton tb(*qstyleoption_cast<const QStyleOptionToolButton *>(opt));
-            tb.palette.setColor(QPalette::ButtonText, onColor(m_focus));
-            tb.palette.setColor(QPalette::WindowText, onColor(m_focus));
+            tb.palette.setColor(QPalette::ButtonText, onColor(m_active));
+            tb.palette.setColor(QPalette::WindowText, onColor(m_active));
             QProxyStyle::drawControl(element, &tb, p, w);
             return;
         }
@@ -372,7 +379,7 @@ void NeobrutalStyle::drawControl(ControlElement element, const QStyleOption *opt
         const QColor line = tab->palette.color(QPalette::WindowText);
         QColor fill = tab->palette.color(QPalette::Button);
         if (sel) {
-            fill = m_focus;
+            fill = m_active;
         } else if (hov) {
             fill = fill.lighter(140);
         }
@@ -406,9 +413,9 @@ void NeobrutalStyle::drawControl(ControlElement element, const QStyleOption *opt
         if (tab && (tab->state & State_Selected) && isEnabled(opt)) {
             QStyleOptionTab t(*tab);
             t.state &= ~State_MouseOver;
-            t.palette.setColor(QPalette::WindowText, onColor(m_focus));
-            t.palette.setColor(QPalette::ButtonText, onColor(m_focus));
-            t.palette.setColor(QPalette::Text, onColor(m_focus));
+            t.palette.setColor(QPalette::WindowText, onColor(m_active));
+            t.palette.setColor(QPalette::ButtonText, onColor(m_active));
+            t.palette.setColor(QPalette::Text, onColor(m_active));
             QProxyStyle::drawControl(element, &t, p, w);
             return;
         }
@@ -418,7 +425,7 @@ void NeobrutalStyle::drawControl(ControlElement element, const QStyleOption *opt
         const QColor line = opt->palette.color(QPalette::WindowText);
         QColor fill = opt->palette.color(QPalette::Button);
         if (isEnabled(opt) && (opt->state & State_Sunken)) {
-            fill = m_focus;
+            fill = m_active;
         } else if (isEnabled(opt) && (opt->state & State_MouseOver)) {
             fill = fill.lighter(140);
         }
@@ -489,7 +496,7 @@ void NeobrutalStyle::drawComplexControl(ComplexControl cc, const QStyleOptionCom
         const bool sliderActive = en && (sb->activeSubControls & SC_ScrollBarSlider);
         const bool sliderDown = sliderActive && (sb->state & State_Sunken);
         if (en && slider.isValid() && sb->maximum > sb->minimum) {
-            const QColor fill = sliderDown ? m_focus : (sliderActive ? m_hover : sb->palette.color(QPalette::Button).lighter(130));
+            const QColor fill = sliderDown ? m_active : (sliderActive ? m_hover : sb->palette.color(QPalette::Button).lighter(130));
             box(p, slider, fill, line);
         }
 
@@ -506,8 +513,8 @@ void NeobrutalStyle::drawComplexControl(ComplexControl cc, const QStyleOptionCom
             ao.rect = horiz ? r.adjusted(0, BW, 0, 0) : r.adjusted(BW, 0, 0, 0);
             const bool act = en && (sb->activeSubControls & b.sc);
             if (act && (sb->state & State_Sunken)) {
-                p->fillRect(ao.rect, m_focus);
-                ao.palette.setColor(QPalette::ButtonText, onColor(m_focus));
+                p->fillRect(ao.rect, m_active);
+                ao.palette.setColor(QPalette::ButtonText, onColor(m_active));
             } else if (act) {
                 p->fillRect(ao.rect, m_hover);
                 ao.palette.setColor(QPalette::ButtonText, onColor(m_hover));
@@ -558,11 +565,11 @@ void NeobrutalStyle::drawComplexControl(ComplexControl cc, const QStyleOptionCom
             QRect hr = subControlRect(CC_Slider, sl, SC_SliderHandle, w);
             const bool act = en && (sl->activeSubControls & SC_SliderHandle);
             const bool down = act && (sl->state & State_Sunken);
-            QColor fill = en ? m_focus : sl->palette.color(QPalette::Button);
+            QColor fill = en ? m_active : sl->palette.color(QPalette::Button);
             if (down) {
-                fill = m_hover;
+                fill = m_active;
             } else if (act) {
-                fill = m_focus.lighter(115);
+                fill = m_hover;
             }
             box(p, hr, fill, line);
         }
@@ -598,8 +605,8 @@ void NeobrutalStyle::drawComplexControl(ComplexControl cc, const QStyleOptionCom
             QColor fill = sb->palette.color(QPalette::Button);
             const bool act = en && b.enabledStep && (sb->activeSubControls & b.sc);
             if (act && (sb->state & State_Sunken)) {
-                fill = m_focus;
-                ao.palette.setColor(QPalette::ButtonText, onColor(m_focus));
+                fill = m_active;
+                ao.palette.setColor(QPalette::ButtonText, onColor(m_active));
             } else if (act) {
                 fill = m_hover;
                 ao.palette.setColor(QPalette::ButtonText, onColor(m_hover));
@@ -642,24 +649,24 @@ void NeobrutalStyle::drawComplexControl(ComplexControl cc, const QStyleOptionCom
             }
             box(p, face, cb->palette.color(QPalette::Base), line);
             if (open) {
-                arrowFill = m_focus;
+                arrowFill = m_active;
             }
             p->fillRect(arrow, arrowFill);
             p->fillRect(QRect(arrow.left() - BW, arrow.top(), BW, arrow.height()), line);
             if (open) {
-                ao.palette.setColor(QPalette::ButtonText, onColor(m_focus));
+                ao.palette.setColor(QPalette::ButtonText, onColor(m_active));
             }
         } else if (!en) {
             box(p, face, cb->palette.color(QPalette::Button), ink);
             p->fillRect(QRect(arrow.left() - BW, arrow.top(), BW, arrow.height()), ink);
         } else if (open || (cb->state & State_Sunken)) {
             const QRect f = face.translated(SHADOW, SHADOW);
-            box(p, f, m_focus, ink);
+            box(p, f, m_active, ink);
             p->fillRect(QRect(arrow.left() + SHADOW - BW, arrow.top() + SHADOW, BW, arrow.height()), ink);
             ao.rect = arrow.translated(SHADOW, SHADOW);
-            ao.palette.setColor(QPalette::ButtonText, onColor(m_focus));
+            ao.palette.setColor(QPalette::ButtonText, onColor(m_active));
         } else {
-            p->fillRect(face.translated(SHADOW, SHADOW), hov ? m_hover : m_focus);
+            p->fillRect(face.translated(SHADOW, SHADOW), hov ? m_hover : m_shadow);
             box(p, face, hov ? cb->palette.color(QPalette::Button).lighter(140) : cb->palette.color(QPalette::Button), ink);
             p->fillRect(QRect(arrow.left() - BW, arrow.top(), BW, arrow.height()), ink);
         }

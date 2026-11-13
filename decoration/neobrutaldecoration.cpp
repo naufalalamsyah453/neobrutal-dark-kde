@@ -114,7 +114,16 @@ QColor Decoration::outlineColor() const
 
 QColor Decoration::titleBarColor() const
 {
-    return window()->color(window()->isActive() ? ColorGroup::Active : ColorGroup::Inactive, ColorRole::TitleBar);
+    QColor c = window()->color(window()->isActive() ? ColorGroup::Active : ColorGroup::Inactive, ColorRole::TitleBar);
+    if (window()->isActive()) {
+        // Jangan biarkan titlebar tenggelam jadi hitam: angkat ke abu medium
+        // (sekitar #3C3C3C untuk skema gelap) supaya shadow jendela tetap terbaca.
+        constexpr qreal lift = 0.14;
+        c = QColor::fromRgbF(c.redF() * (1.0 - lift) + lift,
+                             c.greenF() * (1.0 - lift) + lift,
+                             c.blueF() * (1.0 - lift) + lift);
+    }
+    return c;
 }
 
 QColor Decoration::fontColor() const

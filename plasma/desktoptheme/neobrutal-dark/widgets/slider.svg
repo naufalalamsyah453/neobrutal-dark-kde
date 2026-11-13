@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+<g id="groove-topleft"><rect x="10" y="10" width="2" height="2" fill="#FFFBEB"/></g>
+<g id="groove-top"><rect x="20" y="10" width="10" height="2" fill="#FFFBEB"/></g>
+<g id="groove-topright"><rect x="40" y="10" width="2" height="2" fill="#FFFBEB"/></g>
+<g id="groove-left"><rect x="10" y="20" width="2" height="10" fill="#FFFBEB"/></g>
+<g id="groove-center"><rect x="20" y="20" width="10" height="10" fill="#262626"/></g>
+<g id="groove-right"><rect x="40" y="20" width="2" height="10" fill="#FFFBEB"/></g>
+<g id="groove-bottomleft"><rect x="10" y="30" width="2" height="2" fill="#FFFBEB"/></g>
+<g id="groove-bottom"><rect x="20" y="30" width="10" height="2" fill="#FFFBEB"/></g>
+<g id="groove-bottomright"><rect x="40" y="30" width="2" height="2" fill="#FFFBEB"/></g>
+<g id="groove-hint-left-margin"></g>
+<g id="groove-hint-top-margin"></g>
+<g id="groove-hint-right-margin"></g>
+<g id="groove-hint-bottom-margin"></g>
+<g id="groove-highlight-topleft"><rect x="10" y="40" width="2" height="2" fill="#7DB4FF"/></g>
+<g id="groove-highlight-top"><rect x="20" y="40" width="10" height="2" fill="#7DB4FF"/></g>
+<g id="groove-highlight-topright"><rect x="40" y="40" width="2" height="2" fill="#7DB4FF"/></g>
+<g id="groove-highlight-left"><rect x="10" y="50" width="2" height="10" fill="#7DB4FF"/></g>
+<g id="groove-highlight-center"><rect x="20" y="50" width="10" height="10" fill="#7DB4FF"/></g>
+<g id="groove-highlight-right"><rect x="40" y="50" width="2" height="10" fill="#7DB4FF"/></g>
+<g id="groove-highlight-bottomleft"><rect x="10" y="60" width="2" height="2" fill="#7DB4FF"/></g>
+<g id="groove-highlight-bottom"><rect x="20" y="60" width="10" height="2" fill="#7DB4FF"/></g>
+<g id="groove-highlight-bottomright"><rect x="40" y="60" width="2" height="2" fill="#7DB4FF"/></g>
+<g id="groove-highlight-hint-left-margin"></g>
+<g id="groove-highlight-hint-top-margin"></g>
+<g id="groove-highlight-hint-right-margin"></g>
+<g id="groove-highlight-hint-bottom-margin"></g>
+<g id="horizontal-slider-handle"><rect x="0" y="0" width="20" height="20" fill="#FFFBEB"/><rect x="2" y="2" width="16" height="16" fill="#4A4A4A"/></g>
+<g id="vertical-slider-handle"><rect x="0" y="0" width="20" height="20" fill="#FFFBEB"/><rect x="2" y="2" width="16" height="16" fill="#4A4A4A"/></g>
+<g id="horizontal-slider-hover"><rect x="0" y="0" width="20" height="20" fill="#FF6B9D"/><rect x="2" y="2" width="16" height="16" fill="#444444"/></g>
+<g id="vertical-slider-hover"><rect x="0" y="0" width="20" height="20" fill="#FF6B9D"/><rect x="2" y="2" width="16" height="16" fill="#444444"/></g>
+<g id="horizontal-slider-focus"><rect x="0" y="0" width="24" height="2" fill="#7DB4FF"/><rect x="0" y="22" width="24" height="2" fill="#7DB4FF"/><rect x="0" y="2" width="2" height="20" fill="#7DB4FF"/><rect x="22" y="2" width="2" height="20" fill="#7DB4FF"/></g>
+<g id="vertical-slider-focus"><rect x="0" y="0" width="24" height="2" fill="#7DB4FF"/><rect x="0" y="22" width="24" height="2" fill="#7DB4FF"/><rect x="0" y="2" width="2" height="20" fill="#7DB4FF"/><rect x="22" y="2" width="2" height="20" fill="#7DB4FF"/></g>
+<g id="horizontal-slider-shadow"><rect x="23" y="3" width="3" height="23" fill="#606060"/><rect x="3" y="23" width="23" height="3" fill="#606060"/></g>
+<g id="vertical-slider-shadow"><rect x="23" y="3" width="3" height="23" fill="#606060"/><rect x="3" y="23" width="23" height="3" fill="#606060"/></g>
+<g id="hint-handle-size"><rect x="0" y="0" width="20" height="20" fill="#000" fill-opacity="0.001"/></g>
+</svg>

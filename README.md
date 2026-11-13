@@ -1,13 +1,13 @@
 # Neobrutal Dark untuk KDE Plasma 6
 
 Tema gelap bergaya **neobrutalism** untuk KDE Plasma 6: outline tebal warna krem, tombol timbul
-dengan *hard shadow*, aksen kuning / pink / biru, dan tanpa sudut membulat sama sekali.
+dengan *hard shadow*, aksen abu medium / krem / pink / biru, dan tanpa sudut membulat sama sekali.
 
 Tema ini dipasang sebagai tema **baru** bernama **"Neobrutal Dark"** — tidak menimpa tema yang
 sudah ada. Selain color scheme dan Plasma Style, repo ini berisi **Application Style** dan
 **Window Decoration** buatan sendiri yang ditulis dalam C++ (bukan Kvantum, bukan Aurorae).
 
-[![Release](https://img.shields.io/github/v/release/naufalalamsyah453/neobrutal-dark-kde?style=flat-square&color=FFD93D)](https://github.com/naufalalamsyah453/neobrutal-dark-kde/releases)
+[![Release](https://img.shields.io/github/v/release/naufalalamsyah453/neobrutal-dark-kde?style=flat-square&color=5A5A5A)](https://github.com/naufalalamsyah453/neobrutal-dark-kde/releases)
 [![License](https://img.shields.io/github/license/naufalalamsyah453/neobrutal-dark-kde?style=flat-square&color=FF6B9D)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-KDE%20Plasma%206-7DB4FF?style=flat-square)](https://kde.org/plasma-desktop/)
 
@@ -18,10 +18,12 @@ sudah ada. Selain color scheme dan Plasma Style, repo ini berisi **Application S
 - **Application Style "Neobrutal"** — turunan Fusion (`QProxyStyle`) yang menggambar ulang tombol,
   line edit, combobox, spinbox, checkbox, radio, slider, scrollbar, progress bar, tab, header,
   tooltip, menu, dan seleksi list. Hover memunculkan shadow pink, tombol ditekan bergeser dan
-  berisi kuning.
-- **Window Decoration "Neobrutal Dark"** — plugin KDecoration3: bingkai krem 3px, titlebar kuning,
-  tombol kotak berwarna (hijau minimize, biru maximize, pink close), dan hard shadow jendela.
-- **Plasma Style** — app menu, panel, popup, dan tooltip senada.
+  berisi abu medium.
+- **Window Decoration "Neobrutal Dark"** — plugin KDecoration3: bingkai krem 3px, titlebar abu
+  gelap, tombol kotak berwarna (hijau minimize, biru maximize, pink close), dan hard shadow
+  jendela.
+- **Plasma Style** — app menu, panel, popup, tooltip, **slider**, dan **switch/toggle** senada
+  (termasuk popup tray dan Quick Settings).
 - **Color scheme, Konsole, dan Kvantum** (opsional) disertakan.
 - Semua warna aksen dibaca dari color scheme aktif (`kdeglobals`), jadi tema ikut berubah bila
   skema warnanya diganti.
@@ -29,6 +31,10 @@ sudah ada. Selain color scheme dan Plasma Style, repo ini berisi **Application S
 | Application Style | Menu & popup |
 | --- | --- |
 | ![Style](preview-style.png) | ![Menu](preview-style-menu.png) |
+
+Kontrol Plasma (slider, switch, checkbox, radio):
+
+![Kontrol Plasma](preview-plasma.png)
 
 ## Isi Repo
 
@@ -125,6 +131,10 @@ Window Decorations), lalu:
   Jika tampil aneh, pilih kembali Breeze di Window Decorations dan laporkan bagian yang salah.
 - Aurorae tidak dipakai karena di Plasma 6.8 sudah dipisah dari KWin dan tidak selalu terpasang.
 - Tidak ada sudut membulat — memang begitu gaya neobrutalism-nya.
+- Aplikasi QML/Kirigami (mis. sebagian halaman System Settings) memakai style bawaan Breeze untuk
+  kontrol QQC2. Warnanya mengikuti color scheme Neobrutal Dark (latar gelap, teks krem, fokus biru,
+  seleksi pink), tetapi bingkai tebal neobrutal hanya diterapkan pada kontrol QtWidgets dan
+  komponen Plasma.
 
 ## Lisensi
 

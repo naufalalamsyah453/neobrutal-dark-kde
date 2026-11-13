@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="160">
+<g id="topleft"><rect x="10" y="10" width="2" height="2" fill="#FFFBEB"/></g>
+<g id="top"><rect x="20" y="10" width="10" height="2" fill="#FFFBEB"/></g>
+<g id="topright"><rect x="40" y="10" width="2" height="2" fill="#FFFBEB"/></g>
+<g id="left"><rect x="10" y="20" width="2" height="10" fill="#FFFBEB"/></g>
+<g id="center"><rect x="20" y="20" width="10" height="10" fill="#2E2E2E"/></g>
+<g id="right"><rect x="40" y="20" width="2" height="10" fill="#FFFBEB"/></g>
+<g id="bottomleft"><rect x="10" y="30" width="2" height="2" fill="#FFFBEB"/></g>
+<g id="bottom"><rect x="20" y="30" width="10" height="2" fill="#FFFBEB"/></g>
+<g id="bottomright"><rect x="40" y="30" width="2" height="2" fill="#FFFBEB"/></g>
+<g id="hint-left-margin"></g>
+<g id="hint-top-margin"></g>
+<g id="hint-right-margin"></g>
+<g id="hint-bottom-margin"></g>
+<g id="shadow-topleft"></g>
+<g id="shadow-top"></g>
+<g id="shadow-topright"></g>
+<g id="shadow-left"></g>
+<g id="shadow-center"></g>
+<g id="shadow-right"><rect x="40" y="80" width="4" height="10" fill="#606060"/></g>
+<g id="shadow-bottomleft"></g>
+<g id="shadow-bottom"><rect x="20" y="90" width="10" height="4" fill="#606060"/></g>
+<g id="shadow-bottomright"><rect x="40" y="90" width="4" height="4" fill="#606060"/></g>
+<g id="shadow-hint-left-margin"></g>
+<g id="shadow-hint-top-margin"></g>
+<g id="shadow-hint-right-margin"></g>
+<g id="shadow-hint-bottom-margin"></g>
+</svg>

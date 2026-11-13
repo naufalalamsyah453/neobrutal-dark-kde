@@ -38,7 +38,9 @@ private:
     QRect progressFill(const QStyleOptionProgressBar *pb, const QRect &contents) const;
 
     // warna dari color scheme aktif
-    QColor m_focus;    // kuning: fokus, tombol ditekan, shadow normal
+    QColor m_focus;    // biru: ring fokus, outline saat fokus
     QColor m_hover;    // pink: hover, seleksi
     QColor m_link;     // biru: progress bar
+    QColor m_active;   // charcoal: isian tombol ditekan / terpilih
+    QColor m_shadow;   // near-black: hard shadow tombol
 };

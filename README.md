@@ -22,8 +22,8 @@ sudah ada. Selain color scheme dan Plasma Style, repo ini berisi **Application S
 - **Window Decoration "Neobrutal Dark"** — plugin KDecoration3: bingkai krem 3px, titlebar abu
   gelap, tombol kotak berwarna (hijau minimize, biru maximize, pink close), dan hard shadow
   jendela.
-- **Plasma Style** — app menu, panel, popup, tooltip, **slider**, dan **switch/toggle** senada
-  (termasuk popup tray dan Quick Settings).
+- **Plasma Style** — app menu, panel, popup, tooltip, **slider**, **switch/toggle**, dan
+  **progress bar** senada (termasuk popup tray, OSD volume, dan Quick Settings).
 - **Color scheme, Konsole, dan Kvantum** (opsional) disertakan.
 - Semua warna aksen dibaca dari color scheme aktif (`kdeglobals`), jadi tema ikut berubah bila
   skema warnanya diganti.
